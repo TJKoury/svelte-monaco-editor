@@ -1,38 +1,38 @@
 <div ref:editorTarget></div>
 <script>
-			import monaco from "./monacoeditor.js";
-			export default {
-			  data() {},
-			  helpers: {},
-			  onupdate(updates) {},
-			  ondestroy() {
-			    this.observer.destroy();
-			  },
-			  oncreate() {
-			    let resizeTimer = null;
+	import monaco from "./monacoeditor.js";
+	export default {
+	  data() {},
+	  helpers: {},
+	  onupdate(updates) {},
+	  ondestroy() {
+	    this.observer.destroy();
+	  },
+	  oncreate() {
+	    let resizeTimer = null;
 
-			    window.addEventListener(
-			      "resize",
-			      function() {
-			        editor.layout({ height: "1px", width: "1px" });
-			        clearTimeout(resizeTimer);
-			        resizeTimer = setTimeout(function() {
-			          editor.layout();
-			        }, 10);
-			      },
-			      true
-			    );
-			    const editor = monaco.editor.create(this.refs["editorTarget"], {
-			      value: `import { world } from 'clientSource0';`,
-			      language: "javascript",
-			      automaticLayout: false,
-			      theme: "vs-dark"
-			    });
-			  },
-			  computed: {},
-			  methods: {},
-			  events: {}
-			};
+	    window.addEventListener(
+	      "resize",
+	      function() {
+		editor.layout({ height: "1px", width: "1px" });
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function() {
+		  editor.layout();
+		}, 10);
+	      },
+	      true
+	    );
+	    const editor = monaco.editor.create(this.refs["editorTarget"], {
+	      value: `import { world } from 'clientSource0';`,
+	      language: "javascript",
+	      automaticLayout: false,
+	      theme: "vs-dark"
+	    });
+	  },
+	  computed: {},
+	  methods: {},
+	  events: {}
+	};
 </script>
 <style>
 	ref:editorTarget {
